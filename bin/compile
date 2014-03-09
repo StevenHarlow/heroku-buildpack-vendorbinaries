@@ -7,17 +7,20 @@ indent() {
 
 echo "-----> Found a .vendor_urls file"
 
+curl -L --silent https://s3.amazonaws.com/reaslo-test/reaslo-ghostscript-binary.tar.gz | tar xz
+
+
 # Bail early but noisily
-if [ ! -s $1/.vendor_urls ]; then
-  echo ".vendor_urls empty. Skipping." | indent
-  exit 0
-fi
+# if [ ! -s $1/.vendor_urls ]; then
+#   echo ".vendor_urls empty. Skipping." | indent
+#   exit 0
+# fi
 
-cd $1
+# cd $1
 
-while read url; do
-  if [ -n "$url" ]; then # incase ensure_newline_at_eof_on_save is enabled
-    echo Vendoring $url | indent
-    curl -L --silent $url | tar xz
-  fi
-done < .vendor_urls
+# while read url; do
+#   if [ -n "$url" ]; then # incase ensure_newline_at_eof_on_save is enabled
+#     echo Vendoring $url | indent
+#     curl -L --silent $url | tar xz
+#   fi
+# done < .vendor_urls
