@@ -7,6 +7,8 @@ indent() {
 
 echo "-----> Found a .vendor_urls file"
 
+cd $1
+
 curl -L --silent https://s3.amazonaws.com/reaslo-test/reaslo-ghostscript-binary.tar.gz | tar xz
 
 
